@@ -7,7 +7,7 @@ function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1920')",
+          backgroundImage: "url('/Chilaw_-_Our_Lady_of_Mount_Carmel_Cathedral.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-cathedral-blue/70"></div>
