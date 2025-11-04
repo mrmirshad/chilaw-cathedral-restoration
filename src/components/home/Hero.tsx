@@ -1,16 +1,58 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Church } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Church } from "lucide-react";
+import { useState, useEffect } from "react";
 
 function Hero() {
+  const heroImages = [
+    "/hero-bg-1.jpg",
+    "/hero-bg-2.JPG",
+    "/hero-bg-3.jpg",
+    "/hero-bg-4.jpg",
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/Chilaw_-_Our_Lady_of_Mount_Carmel_Cathedral.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-cathedral-blue/70"></div>
+    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16 bg-cathedral-blue">
+      {/* Background wrapper */}
+      <div className="absolute inset-0 bg-cathedral-blue">
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{
+              duration: 1.8,
+              ease: "easeInOut",
+            }}
+            className="absolute inset-0"
+          >
+            {/* Background image */}
+            <motion.div
+              className="w-full h-full bg-center bg-no-repeat bg-cover"
+              style={{
+                backgroundImage: `url('${heroImages[currentImageIndex]}')`,
+              }}
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.05 }}
+              transition={{
+                duration: 6,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Blue overlay tint */}
+            <div className="absolute inset-0 bg-cathedral-blue/60"></div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
@@ -47,7 +89,9 @@ function Hero() {
           transition={{ duration: 1, delay: 0.6 }}
           className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          Join us in preserving a beacon of faith and community. Together, we can restore the glory of our beloved cathedral for generations to come.
+          Join us in preserving a beacon of faith and community. Together, we
+          can restore the glory of our beloved cathedral for generations to
+          come.
         </motion.p>
 
         <motion.div
@@ -83,8 +127,18 @@ function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           className="text-white/70 text-sm"
         >
-          <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          <svg
+            className="w-6 h-6 mx-auto"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
           </svg>
         </motion.div>
       </motion.div>
