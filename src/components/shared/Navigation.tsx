@@ -1,29 +1,50 @@
-import { motion } from 'framer-motion';
-import { Church, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import { Church, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const scrollToContact = () => {
+    const contactElement = document.getElementById("contact");
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <a href="/" className="flex items-center gap-2 text-cathedral-blue hover:text-cathedral-gold transition-colors">
+          <a
+            href="/"
+            className="flex items-center gap-2 text-cathedral-blue hover:text-cathedral-gold transition-colors"
+          >
             <Church className="w-8 h-8" />
-            <span className="font-heading font-bold text-xl">Mount Carmel Cathedral</span>
+            <span className="font-heading font-bold text-xl">
+              Mount Carmel Cathedral
+            </span>
           </a>
 
           <div className="hidden md:flex items-center gap-6">
-            <a href="/" className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium">
+            <a
+              href="/"
+              className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium"
+            >
               Home
             </a>
-            <a href="/#about" className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium">
+            <a
+              href="/#about"
+              className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium"
+            >
               About
             </a>
-            <a href="/#contact" className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium">
+            <button
+              onClick={scrollToContact}
+              className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium bg-transparent border-none cursor-pointer"
+            >
               Contact
-            </a>
+            </button>
             <a
               href="/donate"
               className="bg-cathedral-gold hover:bg-yellow-500 text-cathedral-blue font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
@@ -61,13 +82,15 @@ function Navigation() {
               >
                 About
               </a>
-              <a
-                href="/#contact"
-                onClick={() => setIsOpen(false)}
-                className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium"
+              <button
+                onClick={() => {
+                  scrollToContact();
+                  setIsOpen(false);
+                }}
+                className="text-gray-700 hover:text-cathedral-gold transition-colors font-medium bg-transparent border-none cursor-pointer text-left"
               >
                 Contact
-              </a>
+              </button>
               <a
                 href="/donate"
                 onClick={() => setIsOpen(false)}
