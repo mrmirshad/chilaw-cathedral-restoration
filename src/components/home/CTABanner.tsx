@@ -1,23 +1,18 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Heart, ArrowRight } from "lucide-react";
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { Heart, ArrowRight } from 'lucide-react';
 
 function CTABanner() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <section
-      id="donate"
-      ref={ref}
-      className="relative py-20 px-4 overflow-hidden"
-    >
+    <section id="donate" ref={ref} className="relative py-20 px-4 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&w=1920')",
+          backgroundImage: "url('https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&w=1920')",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cathedral-blue/90 to-cathedral-blue/80"></div>
@@ -40,9 +35,7 @@ function CTABanner() {
         </p>
 
         <p className="text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-          Every contribution, no matter the size, brings us closer to completing
-          this sacred restoration. Join hundreds of faithful supporters in
-          preserving our spiritual home.
+          Every contribution, no matter the size, brings us closer to completing this sacred restoration. Join hundreds of faithful supporters in preserving our spiritual home.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -62,7 +55,7 @@ function CTABanner() {
             whileTap={{ scale: 0.95 }}
             className="bg-white/10 hover:bg-white/20 text-white font-semibold px-10 py-5 rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/30 hover:border-white/50"
           >
-            About Us
+            Contact Us
           </motion.a>
         </div>
 
@@ -73,8 +66,7 @@ function CTABanner() {
           className="mt-12 pt-12 border-t border-white/20"
         >
           <p className="text-sm text-white/80 italic">
-            "For where your treasure is, there your heart will be also." -
-            Matthew 6:21
+            "For where your treasure is, there your heart will be also." - Matthew 6:21
           </p>
         </motion.div>
       </motion.div>
